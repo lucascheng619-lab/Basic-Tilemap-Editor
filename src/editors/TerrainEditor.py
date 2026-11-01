@@ -16,7 +16,8 @@ class TerrainEditor(BaseEditor):
 
 
     def enter(self, params):
-        self.tilemap = params["level"].tilemap
+        self.level= params["level"]
+        self.tilemap = self.level.tilemap
         self.gui = GUI([
             Button("grass_tile_brush_button", CANVAS_WIDTH / 2 - 25, CANVAS_HEIGHT - 40, gTextures["grass_tile_brush_button"],gTextures["grass_tile_brush_button_selected"]),
             Button("dirt_tile_brush_button", CANVAS_WIDTH / 2 + 5, CANVAS_HEIGHT - 40, gTextures["dirt_tile_brush_button"],gTextures["dirt_tile_brush_button_selected"])

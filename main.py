@@ -5,10 +5,19 @@ from src.AssetManager import *
 #imports all the constants from the constants.py file
 from src.constants import *
 
+from src.states.BaseState import BaseState
+from src.states.game.PlayState import PlayState
+from src.StateMachine import StateMachine
+
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 canvas = pygame.Surface((CANVAS_WIDTH, CANVAS_HEIGHT))
 
 clock = pygame.time.Clock()
+
+gStateMachine = StateMachine({
+    "BaseState": lambda: BaseState(),
+    "PlayState": lambda: PlayState()
+})
 
 
 #Toggles fullscreen
@@ -16,7 +25,9 @@ pygame.display.toggle_fullscreen()
 
 running = True
 
-gStateMachine.change("PlayState")
+gStateMachine.change("PlayState",{
+    "stateMachiene":gStateMachine
+})
 
 def show_FPS():
     FPS = round(clock.get_fps())

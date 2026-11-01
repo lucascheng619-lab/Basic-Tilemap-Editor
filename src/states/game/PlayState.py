@@ -72,6 +72,9 @@ class PlayState(BaseState):
 
         self.editor.changeBrush("dirt")
 
+    def enter(self, params):
+        self.stateMachiene = params["stateMachiene"]
+
 
 
 

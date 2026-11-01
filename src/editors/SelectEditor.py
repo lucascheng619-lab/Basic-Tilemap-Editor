@@ -1,3 +1,4 @@
+from src.Focus import Focus
 from src.AssetManager import *
 
 from src.editors.BaseEditor import BaseEditor
@@ -8,3 +9,8 @@ class SelectEditor(BaseEditor):
         self.enabled = True
         self.cursorTexture = gTextures["cursor"]
         self.cursorShadowTexture = gTextures["cursor_shadow"]
+        self.focus = Focus(None)
+
+    def enter(self, params):
+        self.level = params["level"]
+        
